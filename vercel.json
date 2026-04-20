@@ -1,8 +1,8 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build && cp -r apps/remix/build/client dist",
   "installCommand": "npm install",
   "framework": null,
-  "outputDirectory": "apps/remix/build/client",
+  "outputDirectory": "dist",
   "functions": {
     "api/index.mjs": {
       "maxDuration": 60,
