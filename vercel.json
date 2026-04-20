@@ -2,6 +2,7 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "framework": null,
+  "outputDirectory": "apps/remix/build/client",
   "functions": {
     "api/index.mjs": {
       "maxDuration": 60,
