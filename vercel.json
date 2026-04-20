@@ -1,8 +1,8 @@
 {
-  "buildCommand": "npm run build && cp -r apps/remix/build/client dist",
+  "buildCommand": "npx turbo run build --force",
   "installCommand": "npm install",
   "framework": null,
-  "outputDirectory": "dist",
+  "outputDirectory": "apps/remix/build/client",
   "functions": {
     "api/index.mjs": {
       "maxDuration": 60,
