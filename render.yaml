@@ -1,16 +1,22 @@
+previews:
+  generation: automatic
+  expireAfterDays: 7
+
 services:
   - type: web
     runtime: node
     name: documenso-app
     plan: free
-    buildCommand: npm i && npm run build
+    buildCommand: npm ci && npm run build
     startCommand: npx prisma migrate deploy --schema packages/prisma/schema.prisma && npx turbo run start --filter=@documenso/remix
     healthCheckPath: /api/health
+    previews:
+      numInstances: 1
 
     envVars:
       # Node Version
       - key: NODE_VERSION
-        value: 18.17.0
+        value: 22.22.2
 
       - key: PORT
         value: 10000
@@ -155,6 +161,9 @@ services:
       # Features Optional
       - key: NEXT_PUBLIC_DISABLE_SIGNUP
         sync: false
+        # Preview environments do not inherit sync:false secrets, so keep signup off
+        # unless a shared mail configuration is provided via an environment group.
+        previewValue: 'true'
       - key: NEXT_PUBLIC_USE_INTERNAL_URL_BROWSERLESS
         sync: false
 
