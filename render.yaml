@@ -8,7 +8,7 @@ services:
     name: documenso-app
     plan: free
     buildCommand: npm ci && npm run build
-    startCommand: npx prisma migrate deploy --schema packages/prisma/schema.prisma && npx turbo run start --filter=@documenso/remix
+    startCommand: npx prisma migrate deploy --schema packages/prisma/schema.prisma && NODE_ENV=production node apps/remix/build/server/main.js
     healthCheckPath: /api/health
     previews:
       numInstances: 1
